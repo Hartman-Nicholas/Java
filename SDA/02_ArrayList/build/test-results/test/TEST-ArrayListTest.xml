@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ArrayListTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2021-03-12T15:00:15" hostname="SDA-Lund-60-mbpro" time="0.196">
+  <properties/>
+  <testcase name="getSize_Empty()" classname="ArrayListTest" time="0.02"/>
+  <testcase name="subList()" classname="ArrayListTest" time="0.002"/>
+  <testcase name="remove_EmptyList()" classname="ArrayListTest" time="0.002"/>
+  <testcase name="get_OutOfBounds()" classname="ArrayListTest" time="0.013"/>
+  <testcase name="subList_OutOfBounds()" classname="ArrayListTest" time="0.004"/>
+  <testcase name="testToString()" classname="ArrayListTest" time="0.003"/>
+  <testcase name="remove()" classname="ArrayListTest" time="0.003"/>
+  <testcase name="remove_OutOfBounds()" classname="ArrayListTest" time="0.003"/>
+  <testcase name="subList_SameIndex()" classname="ArrayListTest" time="0.003"/>
+  <testcase name="getSize()" classname="ArrayListTest" time="0.002"/>
+  <testcase name="getTime()" classname="ArrayListTest" time="0.09"/>
+  <testcase name="find_NotFound()" classname="ArrayListTest" time="0.0"/>
+  <testcase name="add()" classname="ArrayListTest" time="0.001"/>
+  <testcase name="get()" classname="ArrayListTest" time="0.001"/>
+  <testcase name="find()" classname="ArrayListTest" time="0.001"/>
+  <testcase name="find_EmptyList()" classname="ArrayListTest" time="0.001"/>
+  <testcase name="get_EmptyList()" classname="ArrayListTest" time="0.006"/>
+  <system-out><![CDATA[2459
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
