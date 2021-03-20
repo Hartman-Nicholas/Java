@@ -1,4 +1,4 @@
-package com.company;
+package com.company.planner;
 
 import java.io.Serializable;
 import java.util.HashMap;

@@ -13,7 +13,12 @@ class Node {
     }
 }
 
+class IndexOutOfBounds extends Exception {
+
+}
+
 public class LinkedList {
+
 
     private Node first = null;
 
@@ -102,7 +107,25 @@ public class LinkedList {
         }
     }
 
-    public Node get(int index) {
+    // This needs to throw an exception as it returns an interger and -1 could be confusing as it could be the
+    // element or a negative value.
+
+    public int getElem(int index) {
+        if (first == null) {
+            return -1;
+        }
+        try {
+            Node current = first;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+            return current.elem;
+        } catch (NullPointerException e) {
+            return -1;
+        }
+    }
+
+    public Node getNode (int index) {
         if (first == null) {
             return null;
         }
@@ -132,30 +155,47 @@ public class LinkedList {
         }
     }
 
+
+    public boolean removeItem(int elem) {
+        if (first == null) return false;
+        if (first.elem == elem) {
+            first = first.next;
+            return true;
+        }
+        Node current = first;
+        while (current.next != null) {
+            if (current.next.elem == elem) {
+                current.next = current.next.next;
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+
+
     public boolean remove (int num) {
-        try {
-            if (search(num) < 0) {
+        int index = search(num);
+
+            if (index < 0) {
                 return false;
-            } else if (search(num)== 0 && size() >1) {
-               first = get(search(num)+1);
+            } else if (index == 0 && size() >1) {
+               first = getNode(search(num)+1);
                return true;
-            } else if (search(num) == 0 && size() == 1){
+            } else if (index == 0 && size() == 1){
                 first = null;
                 return true;
             }
             else {
-                Node previousNode = get(search(num)-1);
-                if (get(search(num)+1) == null ) {
+                Node previousNode = getNode(index - 1);
+                if (getNode(index + 1) == null) {
                     previousNode.next = null;
                 } else {
-                previousNode.next = get(search(num)+1);}
-
+                    previousNode.next = getNode(index + 1);
+                }
                 return true;
-
             }
-        } catch (NullPointerException e) {
-            return false;
-        }
     }
 }
 

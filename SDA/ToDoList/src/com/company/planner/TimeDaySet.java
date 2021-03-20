@@ -1,4 +1,4 @@
-package com.company;
+package com.company.planner;
 
 import java.io.Serial;
 import java.io.Serializable;

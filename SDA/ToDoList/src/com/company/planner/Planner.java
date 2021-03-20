@@ -1,11 +1,13 @@
-package com.company;
+package com.company.planner;
 
+
+import com.company.utils.CommandsList;
 
 import java.io.*;
 
 public class Planner implements Serializable {
 
-    private final String SPACING = "       ";
+    private final String SPACING = "";
     private final WeekDaySet daysOfWeek = new WeekDaySet();
     private final TimeDaySet timeOfDay = new TimeDaySet();
     private final String [][] planner = new String [25][8];
@@ -14,10 +16,10 @@ public class Planner implements Serializable {
     private final static long serialVersionUID = 1L;
 
     public Planner() {
-        viewPlanner();
+        generatePlanner();
     }
 
-    public void viewPlanner () {
+    public void generatePlanner () {
         for (int i=0; i<25; i++) {
             for(int j=0; j<8; j++) {
                 if (i<=0) {
@@ -29,11 +31,15 @@ public class Planner implements Serializable {
                 }
             }
         }
+    }
 
+
+    public void viewPlanner () {
         for (String[] row : planner) {
             printRow(row);
         }
     }
+
 
     public void addTask (int time, String day, String task) {
        planner[time+1] [dayIndex(day)] = task;
@@ -128,8 +134,8 @@ public class Planner implements Serializable {
 
     private void printRow (String[] row) {
         for (String i : row) {
-            System.out.print(i);
-            System.out.print("\t");
+            System.out.printf("%-18s",i);
+
         }
         System.out.println();
     }

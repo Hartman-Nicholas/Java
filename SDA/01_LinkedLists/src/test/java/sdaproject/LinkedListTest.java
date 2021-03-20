@@ -12,6 +12,21 @@ class LinkedListTest {
     }
 
     @Test
+    void getTime() {
+        LinkedList list = new LinkedList();
+        for (int i = 0; i < 10000; i++) {
+            list.add(i);
+        }
+        long startTime = System.nanoTime();
+        list.getElem(9999);
+        long elapsedNanos = System.nanoTime() - startTime;
+        System.out.println(elapsedNanos);
+
+    }
+
+
+
+    @Test
     void addANumberToList() {
         LinkedList list = new LinkedList();
         list.add(5);
@@ -57,31 +72,64 @@ class LinkedListTest {
     }
 
     @Test
-    void get_NotFound() {
+    void getElem_NotFound() {
         LinkedList list = new LinkedList();
         list.add(5);
         list.add(7);
         list.add(10);
 
-        assertEquals(list.get(12), null);
+        int expected = -1;
+        assertEquals(list.getElem(4), expected);
     }
 
     @Test
-    void get_FullList() {
+    void getElem_FullList() {
         LinkedList list = new LinkedList();
         list.add(5);
         list.add(7);
         list.add(10);
 
         int expected = 10;
-        assertEquals(list.get(2).elem, expected);
+        assertEquals(list.getElem(2), expected);
     }
 
     @Test
-    void get_EmptyList() {
+    void getElem_EmptyList() {
         LinkedList list = new LinkedList();
 
-        assertEquals(list.get(2), null);
+        int expected = -1;
+        assertEquals(list.getElem(2), expected);
+    }
+
+    @Test
+    void getNode_NotFound() {
+        LinkedList list = new LinkedList();
+        list.add(5);
+        list.add(7);
+        list.add(10);
+
+
+        assertNull(list.getNode(4));
+    }
+
+    @Test
+    void getNode_FullList() {
+        LinkedList list = new LinkedList();
+        list.add(5);
+        list.add(7);
+        list.add(10);
+
+        int expected = 10;
+        assertEquals(list.getNode(2).elem, expected);
+    }
+
+    @Test
+    void getNode_EmptyList() {
+        LinkedList list = new LinkedList();
+
+
+
+        assertNull(list.getNode(4));
     }
 
     @Test
@@ -101,6 +149,67 @@ class LinkedListTest {
 
         int expected = 0;
         assertEquals(list.size(), expected);
+    }
+
+    @Test
+    void removeItem_FullListStart() {
+        LinkedList list = new LinkedList();
+        list.add(5);
+        list.add(7);
+        list.add(10);
+
+        String expected = "LinkedList(7,10)";
+        boolean remove = list.removeItem(5);
+        assertEquals(expected, list.toString());
+        assertTrue(remove);
+    }
+
+    @Test
+    void removeItem_FullListEnd() {
+        LinkedList list = new LinkedList();
+        list.add(5);
+        list.add(7);
+        list.add(10);
+
+        String expected = "LinkedList(5,7)";
+        boolean remove = list.removeItem(10);
+        assertEquals(expected, list.toString());
+        assertTrue(remove);
+    }
+    @Test
+    void removeItem_FullListMiddle() {
+        LinkedList list = new LinkedList();
+        list.add(5);
+        list.add(7);
+        list.add(10);
+
+        String expected = "LinkedList(5,10)";
+        boolean remove = list.removeItem(7);
+        assertEquals(expected, list.toString());
+        assertTrue(remove);
+    }
+
+    @Test
+    void removeItem_FullListMissing() {
+        LinkedList list = new LinkedList();
+        list.add(5);
+        list.add(7);
+        list.add(10);
+
+        String expected = "LinkedList(5,7,10)";
+        boolean remove = list.removeItem(12);
+        assertEquals(expected, list.toString());
+        assertFalse(remove);
+    }
+
+    @Test
+    void removeItem_EmptyList() {
+        LinkedList list = new LinkedList();
+
+        String expected = "LinkedList()";
+        boolean remove = list.removeItem(5);
+        assertEquals(expected, list.toString());
+        assertFalse(remove);
     }
 
     @Test
@@ -163,5 +272,6 @@ class LinkedListTest {
         assertEquals(expected, list.toString());
         assertFalse(remove);
     }
+
 
 }

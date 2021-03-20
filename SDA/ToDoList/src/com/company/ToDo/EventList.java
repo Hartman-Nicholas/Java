@@ -1,4 +1,7 @@
-package com.company;
+package com.company.ToDo;
+
+import com.company.ToDo.Task;
+import com.company.ToDo.TaskList;
 
 import java.util.ArrayList;
 
